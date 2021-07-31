@@ -8,11 +8,7 @@
 import Foundation
 import HealthKit
 
-extension Date{
-    static func mondayAt12AM()-> Date{
-        return Calendar(identifier: .iso8601).date(from: Calendar(identifier: .iso8601).dateComponents([.yearForWeekOfYear, .weekOfYear], from: Date()))!
-    }
-}
+
 
 class HealthStore{
     //provides access related to health
@@ -30,19 +26,21 @@ class HealthStore{
     func calculateSteps (completion: @escaping (HKStatisticsCollection?)-> Void){
         let stepType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!
         
-        // start date is set to be a week ago
-        let startDate = Calendar.current.date(byAdding: .hour ,value:-24 , to: Date())
+        // start date is exactly 24 hours ago
+        let startDate = Calendar.current.date(byAdding: .hour ,value:-24 , to: Date())!
         
-        let achorDate = Date.mondayAt12AM()
+        // anchor date is exactly the start of 24 hours ago
+        let anchorDate = Calendar.current.startOfDay(for: startDate)
+
         
-        let daily = DateComponents(minute: 5)
+        let interval = DateComponents(minute: 5)
         
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: Date(), options: .strictStartDate)
-        //cummalivesum means we want to calculte using iphone and watch
-        query = HKStatisticsCollectionQuery(quantityType: stepType, quantitySamplePredicate: predicate, options: .cumulativeSum, anchorDate: achorDate, intervalComponents: daily)
+        //cummalivesum means we want to calculate using iphone and watch steps
+        query = HKStatisticsCollectionQuery(quantityType: stepType, quantitySamplePredicate: predicate, options: .cumulativeSum, anchorDate: anchorDate, intervalComponents: interval)
         
-        query!.initialResultsHandler = {query, staticsCollection, error in
-            completion(staticsCollection)
+        query!.initialResultsHandler = {query, statisticsCollection, error in
+            completion(statisticsCollection)
             
         }
         

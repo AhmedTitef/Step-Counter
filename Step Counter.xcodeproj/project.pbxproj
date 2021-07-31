@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		0C6A5B5C26B4D84C0015E35A /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6A5B5B26B4D84C0015E35A /* HealthStore.swift */; };
 		0C6A5B6026B4DB330015E35A /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C6A5B5F26B4DB330015E35A /* HealthKit.framework */; };
 		0C6A5B6326B4E8560015E35A /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6A5B6226B4E8560015E35A /* Step.swift */; };
+		0C6A5B6626B54D9B0015E35A /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 0C6A5B6526B54D9B0015E35A /* SwiftUICharts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C6A5B6026B4DB330015E35A /* HealthKit.framework in Frameworks */,
+				0C6A5B6626B54D9B0015E35A /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +176,9 @@
 			dependencies = (
 			);
 			name = "Step Counter";
+			packageProductDependencies = (
+				0C6A5B6526B54D9B0015E35A /* SwiftUICharts */,
+			);
 			productName = "Step Counter";
 			productReference = 0C6A5B2D26B4B9900015E35A /* Step Counter.app */;
 			productType = "com.apple.product-type.application";
@@ -245,6 +250,9 @@
 				Base,
 			);
 			mainGroup = 0C6A5B2426B4B9900015E35A;
+			packageReferences = (
+				0C6A5B6426B54D9B0015E35A /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
 			productRefGroup = 0C6A5B2E26B4B9900015E35A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -612,6 +620,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0C6A5B6426B54D9B0015E35A /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0C6A5B6526B54D9B0015E35A /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0C6A5B6426B54D9B0015E35A /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0C6A5B2526B4B9900015E35A /* Project object */;
 }

@@ -11,7 +11,6 @@ struct Step: Identifiable {
     let id = UUID()
     
     let count : Int
-    //start of th e steps
     let startDate : Date
     let endDate : Date
 }

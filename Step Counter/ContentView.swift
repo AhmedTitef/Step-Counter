@@ -7,10 +7,16 @@
 
 import SwiftUI
 import HealthKit
+import SwiftUICharts
+
 
 struct ContentView: View {
     
     private var healthStore : HealthStore?
+    
+
+     @State private var dataSetForBarChart : [(String, Int)] = [(String, Int)]()
+    @State private var dataSetForLineChart : [( Double)] = [( Double)]()
     
     @State private var steps: [Step] = [Step]()
     
@@ -25,25 +31,58 @@ struct ContentView: View {
         let endDate = Date()
         
         
-        staticsCollection.enumerateStatistics(from: startDate, to: endDate){(statics , stop) in
+        staticsCollection.enumerateStatistics(from: startDate, to: endDate){(statistics , stop) in
            
-            let count = statics.sumQuantity()?.doubleValue(for: .count())
+            let count = statistics.sumQuantity()?.doubleValue(for: .count())
             
-            let step = Step(count: Int(count ?? 0), startDate: statics.startDate , endDate: statics.endDate)
+            let step = Step(count: Int(count ?? 0), startDate: statistics.startDate , endDate: statistics.endDate)
             steps.append(step)
+            let timeFromatter = DateFormatter()
+            timeFromatter.dateFormat = "HH:mm"
             
+            
+            
+            let startTime = timeFromatter.string(from: step.startDate)
+            let endTime = timeFromatter.string(from: step.endDate)
+            dataSetForBarChart.append(("\(startTime) \("-") \(endTime) ", step.count ))
+            
+            dataSetForLineChart.append((Double)(step.count) )
             
         }
         steps.reverse()
+        
+        
+        
+        print(dataSetForLineChart)
+       
+        
+        
+       
     }
+    
+     
     
     var body: some View {
         
         
         
+        VStack(){
+            LineChartView(data: dataSetForLineChart, title: "Steps Count", form: ChartForm.extraLarge).padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
+            BarChartView(data: ChartData(values: dataSetForBarChart), title: "Last 24 Hours Steps Count", form: ChartForm.extraLarge)
+            
+        }
+        
+
+        
         List(steps, id: \.id){step in
             
+          
             VStack(alignment: .leading){
+               
+                
+                
+                
+                
                 Text(step.startDate, style: .date).opacity(1)
                 Text("\(step.count) \(" steps")" )
                 
