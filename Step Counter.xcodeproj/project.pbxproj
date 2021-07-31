@@ -13,6 +13,9 @@
 		0C6A5B3826B4B9910015E35A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C6A5B3726B4B9910015E35A /* Preview Assets.xcassets */; };
 		0C6A5B4326B4B9910015E35A /* Step_CounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6A5B4226B4B9910015E35A /* Step_CounterTests.swift */; };
 		0C6A5B4E26B4B9910015E35A /* Step_CounterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6A5B4D26B4B9910015E35A /* Step_CounterUITests.swift */; };
+		0C6A5B5C26B4D84C0015E35A /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6A5B5B26B4D84C0015E35A /* HealthStore.swift */; };
+		0C6A5B6026B4DB330015E35A /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C6A5B5F26B4DB330015E35A /* HealthKit.framework */; };
+		0C6A5B6326B4E8560015E35A /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6A5B6226B4E8560015E35A /* Step.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,10 @@
 		0C6A5B4926B4B9910015E35A /* Step CounterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Step CounterUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C6A5B4D26B4B9910015E35A /* Step_CounterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step_CounterUITests.swift; sourceTree = "<group>"; };
 		0C6A5B4F26B4B9910015E35A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C6A5B5B26B4D84C0015E35A /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
+		0C6A5B5D26B4DB330015E35A /* Step Counter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Step Counter.entitlements"; sourceTree = "<group>"; };
+		0C6A5B5F26B4DB330015E35A /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		0C6A5B6226B4E8560015E35A /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C6A5B6026B4DB330015E35A /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +87,7 @@
 				0C6A5B4126B4B9910015E35A /* Step CounterTests */,
 				0C6A5B4C26B4B9910015E35A /* Step CounterUITests */,
 				0C6A5B2E26B4B9900015E35A /* Products */,
+				0C6A5B5E26B4DB330015E35A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,11 +104,14 @@
 		0C6A5B2F26B4B9900015E35A /* Step Counter */ = {
 			isa = PBXGroup;
 			children = (
+				0C6A5B6126B4E8370015E35A /* Models */,
+				0C6A5B5D26B4DB330015E35A /* Step Counter.entitlements */,
 				0C6A5B3026B4B9900015E35A /* Step_CounterApp.swift */,
 				0C6A5B3226B4B9900015E35A /* ContentView.swift */,
 				0C6A5B3426B4B9910015E35A /* Assets.xcassets */,
 				0C6A5B3926B4B9910015E35A /* Info.plist */,
 				0C6A5B3626B4B9910015E35A /* Preview Content */,
+				0C6A5B5B26B4D84C0015E35A /* HealthStore.swift */,
 			);
 			path = "Step Counter";
 			sourceTree = "<group>";
@@ -128,6 +140,22 @@
 				0C6A5B4F26B4B9910015E35A /* Info.plist */,
 			);
 			path = "Step CounterUITests";
+			sourceTree = "<group>";
+		};
+		0C6A5B5E26B4DB330015E35A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C6A5B5F26B4DB330015E35A /* HealthKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0C6A5B6126B4E8370015E35A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0C6A5B6226B4E8560015E35A /* Step.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +288,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C6A5B3326B4B9900015E35A /* ContentView.swift in Sources */,
+				0C6A5B6326B4E8560015E35A /* Step.swift in Sources */,
+				0C6A5B5C26B4D84C0015E35A /* HealthStore.swift in Sources */,
 				0C6A5B3126B4B9900015E35A /* Step_CounterApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,6 +447,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Step Counter/Step Counter.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Step Counter/Preview Content\"";
 				DEVELOPMENT_TEAM = 3NX65ZHXX8;
@@ -439,6 +470,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Step Counter/Step Counter.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Step Counter/Preview Content\"";
 				DEVELOPMENT_TEAM = 3NX65ZHXX8;
